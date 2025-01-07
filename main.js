@@ -29,13 +29,13 @@ openMenu.appendChild(menuLinks);
 openMenu.appendChild(closeMenuIcon);
 document.body.appendChild(openMenu);
 
-// Add new menu icon to top right corner
+ // Add new menu icon to top right corner
 const scrollMenu = document.createElement('img');
-scrollMenu.src = '/Studio-Grace-Assignment/assets/menu/scroll-menu.png';
+scrollMenu.src = './assets/menu/scroll-menu.png';
 scrollMenu.setAttribute('width', '35')
 scrollMenu.setAttribute('height', '35')
-scrollMenu.classList.add('scroll-menu', 'hidden');
-document.body.appendChild(scrollMenu);
+scrollMenu.classList.add('scroll-menu', 'hidden'); 
+document.body.appendChild(scrollMenu); 
 
 // Event listeners for the open and close menu icons
 menuButton.addEventListener('click', () => {
