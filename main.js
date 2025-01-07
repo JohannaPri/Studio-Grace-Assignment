@@ -2,7 +2,69 @@ import './scss/style.scss';
 
 //--------------------------------------------------- MENU -----------------------------------------------------------//
 
+
+//TEST 
+
 const menuButton = document.querySelector('.menu-closed');
+
+// Create the navigation links for the open menu
+const menuLinks = document.createElement('div');
+menuLinks.className = 'menu-links';
+menuLinks.innerHTML = `
+    <a class="hyperlink" href="#">Book a studio</a>
+    <a class="hyperlink" href="#">Book a session</a>
+    <a class="hyperlink" href="#">Our studios</a>
+    <a class="hyperlink" href="#">The vision</a>
+    <a class="hyperlink" href="#">Our team</a>
+    <a class="hyperlink" href="#">Contact us</a>
+    <a class="hyperlink" href="#">Faq</a>
+`;
+
+// Create the close menu icon
+const closeMenuIcon = document.createElement('span');
+closeMenuIcon.classList.add('material-symbols-rounded');
+closeMenuIcon.innerHTML = 'close';
+
+// Create the open menu
+const openMenu = document.createElement('div');
+openMenu.className = 'open-menu hidden';
+openMenu.appendChild(menuLinks);
+openMenu.appendChild(closeMenuIcon);
+document.body.appendChild(openMenu);
+
+// Fetch the existing scroll-menu image from the HTML
+const scrollMenu = document.querySelector('.scroll-menu');  // Now using the one from HTML
+
+// Event listeners for the open and close menu icons
+menuButton.addEventListener('click', () => {
+  openMenu.classList.remove('hidden');
+});
+
+closeMenuIcon.addEventListener('click', () => {
+  openMenu.classList.add('hidden');
+});
+
+// Event listener for the scroll-menu click (open menu)
+scrollMenu.addEventListener('click', () => {
+  openMenu.classList.remove('hidden');
+  scrollMenu.classList.add('hidden');
+});
+
+// Event listener for the scroll event (show/hide scroll-menu)
+window.addEventListener('scroll', () => {
+  const menuButtonRect = menuButton.getBoundingClientRect();
+  
+  // Show scroll-menu when user scrolls down and menu is hidden
+  if (menuButtonRect.bottom < 0 && openMenu.classList.contains('hidden')) {
+    scrollMenu.classList.remove('hidden');
+  } else {
+    scrollMenu.classList.add('hidden');
+  }
+});
+
+
+
+/* const menuButton = document.querySelector('.menu-closed');
 
 // Create the navigation links for the open menu
 const menuLinks = document.createElement('div');
@@ -58,7 +120,7 @@ window.addEventListener('scroll', () => {
   } else {
     scrollMenu.classList.add('hidden');
   }
-});
+}); */
 
 //--------------------------------------------------- COOKIES -----------------------------------------------------------//
 
